@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Magic | Create & Share</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="snow-container" aria-hidden="true"></div>
+
+    <header class="glass-header">
+        <div class="logo">
+            <span class="icon">🎄</span> Christmas<span class="highlight">Magic</span>
+        </div>
+        <nav>
+            <button class="nav-btn active" data-target="home">Home</button>
+            <button class="nav-btn" data-target="generator">Card Generator</button>
+            <button class="nav-btn" data-target="editor">Photo Editor</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HOME SECTION -->
+        <section id="home" class="active-section fade-in">
+            <div class="hero">
+                <h1>Spread the <span class="text-gradient">Holiday Cheer</span></h1>
+                <p>Create personalized Christmas cards and festive photos in seconds.</p>
+                <div class="cta-group">
+                    <button class="cta-primary" onclick="navigateTo('generator')">Create a Card</button>
+                    <button class="cta-secondary" onclick="navigateTo('editor')">Edit Photo</button>
+                </div>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Custom Cards</h3>
+                    <p>Choose from beautiful templates and add your heartfelt messages.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Photo Editor</h3>
+                    <p>Add Santa hats, snow, and festive frames to your photos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Instant Share</h3>
+                    <p>Download high-quality images ready for social media.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARD GENERATOR SECTION -->
+        <section id="generator" class="hidden-section fade-in">
+            <div class="tool-container">
+                <h2>Design Your Card</h2>
+                <div class="workspace">
+                    <div class="controls">
+                        <div class="control-group">
+                            <label>Choose Template</label>
+                            <div class="template-grid" id="cardTemplates">
+                                <!-- Templates injected by JS -->
+                                <div class="template-option selected" data-color="#D42426">Red</div>
+                                <div class="template-option" data-color="#165B33">Green</div>
+                                <div class="template-option" data-color="#14213D">Midnight</div>
+                                <div class="template-option" data-color="#F8B229">Gold</div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Message</label>
+                            <textarea id="cardMessage" placeholder="Merry Christmas! Wishing you joy and happiness..."></textarea>
+                        </div>
+                        <div class="control-group">
+                            <label>From</label>
+                            <input type="text" id="cardSign" placeholder="The Smith Family">
+                        </div>
+                        <button id="downloadCardBtn" class="cta-primary">Download Card</button>
+                    </div>
+                    <div class="preview-area">
+                        <canvas id="cardCanvas" width="600" height="800"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHOTO EDITOR SECTION -->
+        <section id="editor" class="hidden-section fade-in">
+            <div class="tool-container">
+                <h2>Festive Photo Editor</h2>
+                <div class="workspace">
+                    <div class="controls">
+                        <div class="control-group">
+                            <label class="file-upload">
+                                <span>📁 Upload Photo</span>
+                                <input type="file" id="photoInput" accept="image/*">
+                            </label>
+                        </div>
+                        <div class="control-group">
+                            <label>Add Stickers</label>
+                            <div class="sticker-grid">
+                                <button class="sticker-btn" data-sticker="hat">🎅 Hat</button>
+                                <button class="sticker-btn" data-sticker="tree">🎄 Tree</button>
+                                <button class="sticker-btn" data-sticker="snowflake">❄️ Snow</button>
+                                <button class="sticker-btn" data-sticker="gift">🎁 Gift</button>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Filters</label>
+                            <div class="filter-options">
+                                <button class="filter-btn" onclick="applyFilter('none')">Normal</button>
+                                <button class="filter-btn" onclick="applyFilter('grayscale')">B&W</button>
+                                <button class="filter-btn" onclick="applyFilter('sepia')">Vintage</button>
+                            </div>
+                        </div>
+                        <button id="downloadPhotoBtn" class="cta-primary" disabled>Download Photo</button>
+                    </div>
+                    <div class="preview-area">
+                        <canvas id="photoCanvas" width="800" height="600"></canvas>
+                        <div id="editorPlaceholder" class="placeholder-text">Upload a photo to start editing</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Christmas Magic SaaS. Made with ❤️ and ❄️.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
